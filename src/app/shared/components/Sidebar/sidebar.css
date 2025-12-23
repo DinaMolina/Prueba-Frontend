@@ -1,0 +1,26 @@
+.header__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.card:hover a {
+  text-decoration: underline;
+}
+
+.container {
+  width: min(1440px, 80%);
+}
+
+@media screen and (min-width: 768px) {
+  .header__grid {
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .aside__img {
+    left: 50%;
+    transform: translatex(-50%);
+  }
+}

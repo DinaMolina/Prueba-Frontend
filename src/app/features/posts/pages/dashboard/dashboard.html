@@ -1,0 +1,31 @@
+<div class="lg:flex min-h-screen">
+
+  <app-sidebar></app-sidebar>
+  <main class="flex-grow bg-gray-100">
+    <div class="container mx-auto">
+      <div class="py-6 flex-col flex md:flex-row justify-end items-center">
+        <button (click)="showForm()"
+          class="bg-green-500 text-white uppercase rounded-full px-5 py-2 md:py-1 text-sm shadow-lg tracking-wider font-medium hover:bg-green-600 mr-0 md:mr-5">+
+          Crear
+          nuevo post</button>
+
+      </div>
+    </div>
+    @switch (screen()) {
+    @case (1) {
+    <app-post-list (updatePost)="updateForm($event)" (postSelected)="showOnePost($event)"></app-post-list>
+    }
+    @case (2) {
+    <app-post-blog [idPost]="idPost()" (back)="showAllPosts()"></app-post-blog>
+    }
+    @case (3) {
+    <app-form-post (back)="showAllPosts()" [idPost]="idPost()"></app-form-post>
+    }
+    }
+
+
+
+  </main>
+
+
+</div>

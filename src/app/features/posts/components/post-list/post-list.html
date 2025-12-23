@@ -1,0 +1,38 @@
+<div class="flex justify-center mx-auto mt-3 pb-14">
+  <section class="grid md:grid-cols-2 lg:grid-cols-2 gap-6 ">
+    @for (post of posts(); track $index){
+    <div class="card bg-white rounded-md shadow-xs px-5 py-4  hover:bg-slate-200">
+      <a class="font-medium capitalize text-lg" href="#">{{post.title}}</a>
+
+      <span class="flex items-center text-gray-500"> {{post.author}} <span
+          class="bg-blue-400 rounded-full w-3 h-3 ml-1.5"></span></span>
+      <p class="text-gray-500"> {{ (post.body.length > 30) ? (post.body | slice:0:30) + '...' : post.body }} </p>
+
+      <div class="flex items-center mt-8">
+
+
+        <span
+          class="text-gray-500 font-medium text-right lg:bg-red-400 lg:text-white lg:rounded-full lg:w-5 lg:h-5 xl:w-auto xl:h-auto lg:flex lg:justify-center lg:items-center lg:text-xs xl:text-gray-500 xl:bg-transparent xl:text-base ml-auto xl:inline-block">
+          <span class="inline lg:hidden xl:inline">Actualizado:</span></span>
+        <span class="text-gray-500 ml-4">{{ post.updatedAt| date:'short'}}</span>
+
+      </div>
+      <button (click)="verPost(post._id)"
+        class="bg-green-400 text-white uppercase rounded-full px-5 py-2 md:py-1 text-sm shadow-lg tracking-wider font-medium hover:bg-green-500 mr-0 md:mr-5">
+        Leer</button>
+      <button (click)="editarPost(post._id)"
+        class="bg-blue-400 text-white uppercase rounded-full px-5 py-2 md:py-1 text-sm shadow-lg tracking-wider font-medium hover:bg-blue-500 mr-0 md:mr-5">
+        Editar</button>
+      <button (click)="eliminar(post._id)"
+        class="bg-red-400 text-white uppercase rounded-full px-5 py-2 md:py-1 text-sm shadow-lg tracking-wider font-medium hover:bg-red-500 mr-0 md:mr-5">
+        Eliminar</button>
+
+    </div>
+
+    }
+
+
+
+
+  </section>
+</div>

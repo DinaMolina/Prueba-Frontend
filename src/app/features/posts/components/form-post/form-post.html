@@ -1,0 +1,51 @@
+<div class=" p-10">
+  <div class="flex justify-end">
+    <button (click)="backAllPost()"
+      class="bg-blue-400 text-white uppercase  px-5 py-2 md:py-1 text-sm shadow-lg tracking-wider font-medium hover:bg-blue-500 mr-0 md:mr-5">
+
+      Regresar</button>
+  </div>
+
+  <form autocomplete="off" [formGroup]="postForm" (ngSubmit)="onSave()">
+    <div>
+      <span class="uppercase text-sm text-gray-600 font-bold">Autor</span>
+      <input formControlName="author"
+        class="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="text"
+        placeholder="">
+      @if ( formUtils.isValidField( postForm, 'author') ) {
+      <span class="form-text text-red-500">
+        {{ formUtils.getFieldError(postForm, "author") }}
+      </span>
+      }
+    </div>
+    <div class="mt-8">
+      <span class="uppercase text-sm text-gray-600 font-bold">Título</span>
+      <input formControlName="title"
+        class="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+        type="text">
+      @if ( formUtils.isValidField( postForm, 'title') ) {
+      <span class="form-text text-red-500">
+        {{ formUtils.getFieldError(postForm, "title") }}
+      </span>
+      }
+    </div>
+    <div class="mt-8">
+      <span class="uppercase text-sm text-gray-600 font-bold">Contenido</span>
+      <textarea formControlName="body"
+        class="w-full h-32 bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></textarea>
+      @if ( formUtils.isValidField( postForm, 'body') ) {
+      <span class="form-text text-red-500">
+        {{ formUtils.getFieldError(postForm, "body") }}
+      </span>
+      }
+    </div>
+    <div class="mt-8">
+      <button type="submit"
+        class="uppercase text-sm font-bold tracking-wide bg-blue-500 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline">
+        Publicar
+      </button>
+    </div>
+  </form>
+
+
+</div>
